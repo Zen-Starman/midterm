@@ -16,7 +16,7 @@ function validForm()
         $f3->set("errors['name']", "Please enter a valid name");
     }
 
-    if (!validQty($f3->get('options'))) {
+    if (!validOptions($f3->get('options'))) {
 
         $isValid = false;
         $f3->set("errors['options']", "Please select valid options");
@@ -45,13 +45,13 @@ function validOptions($options)
 {
     global $f3;
 
-    //Questions are not entirely mandatory
+    //Questions are mandatory
     if (empty($options)) {
-        return true;
+        return false;
     }
     //If there are options chosen, we need to validate
-    foreach ($options as $box) {
-        if (!in_array($box, $f3->get('options'))) {
+    foreach ($options as $option) {
+        if (!in_array($option, $f3->get('options'))) {
             return false;
         }
     }

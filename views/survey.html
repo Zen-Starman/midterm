@@ -16,21 +16,24 @@
 <form method="post" action="#">
 
     <label>Name
+        <check if="{{ @errors['name'] }}">
+            <span class="err">{{ @errors['name'] }}</span>
+        </check>
         <input type="text" name="name" value="{{ @name }}">
     </label>
     <br>
     <br>
     <p>Check all that apply:
-        <check if="{{  @errors['options'}}">
+        <check if="{{ @errors['options'] }}">
             <span class="err">{{ @errors['options'] }}</span>
         </check>
         <br>
-        <repeat group="{{ @option }}" value="{{ @boxOption }}">
+        <repeat group="{{ @options }}" value="{{ @options }}">
             <label>
-                <input type="checkbox" name="options[]" value="{{ @boxOption }}"
-                       <check if="{{ !empty }}"
-                >
-                {{ @boxOption }}
+                <check if="{{ !empty }}">
+                <input type="checkbox" name="options[]" value="{{ @options }}">
+                {{ @options }}
+                </check>
             </label><br>
         </repeat>
 
