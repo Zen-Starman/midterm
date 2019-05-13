@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Food Order</title>
+    <title>Midterm Survey</title>
 
     <style>
         .err {
@@ -12,14 +12,14 @@
 
 </head>
 <body>
-<h1>Food Order</h1>
+<h1>Midterm Survey</h1>
 <form method="post" action="#">
 
+    <check if="{{ @errors['name'] }}">
+        <span class="err">{{ @errors['name'] }}</span>
+    </check>
     <label>Name
-        <check if="{{ @errors['name'] }}">
-            <span class="err">{{ @errors['name'] }}</span>
-        </check>
-        <input type="text" name="name" value="{{ @name }}">
+        <input type="text" id="name" name="name" value="{{ @name }}">
     </label>
     <br>
     <br>
@@ -28,11 +28,13 @@
             <span class="err">{{ @errors['options'] }}</span>
         </check>
         <br>
-        <repeat group="{{ @options }}" value="{{ @options }}">
+        <repeat group="{{ @options }}" value="{{ @option }}">
             <label>
-                <check if="{{ !empty }}">
-                <input type="checkbox" name="options[]" value="{{ @options }}">
-                {{ @options }}
+                <input type="checkbox" name="options[]" value="{{ @option }}">
+
+                <check if="{{ !empty(@options) }}">
+
+                {{ @option }}
                 </check>
             </label><br>
         </repeat>
