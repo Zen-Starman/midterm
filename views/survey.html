@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Order</title>
+
+    <style>
+        .err {
+            color: darkred;
+        }
+    </style>
+
+</head>
+<body>
+<h1>Food Order</h1>
+<form method="post" action="#">
+
+    <label>Name
+        <input type="text" name="name" value="{{ @name }}">
+    </label>
+    <br>
+    <br>
+    <p>Check all that apply:
+        <check if="{{  @errors['options'}}">
+            <span class="err">{{ @errors['options'] }}</span>
+        </check>
+        <br>
+        <repeat group="{{ @option }}" value="{{ @boxOption }}">
+            <label>
+                <input type="checkbox" name="options[]" value="{{ @boxOption }}"
+                       <check if="{{ !empty }}"
+                >
+                {{ @boxOption }}
+            </label><br>
+        </repeat>
+
+    </p>
+
+    <!-- Adds Survey checkboxes here -->
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
